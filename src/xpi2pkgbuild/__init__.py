@@ -4,4 +4,4 @@
 
 """Mozilla XPI based PKGBUILD generator using mozilla addon API."""
 
-__version__ = '0.1.0'
+__version__ = '1.0.0'
