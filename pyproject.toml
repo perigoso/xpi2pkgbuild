@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2023 Rafael Silva
+#
+# SPDX-License-Identifier: MIT
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "xpi2pkgbuild"
+authors = [{name = "Rafael Silva", email = "perigoso@riseup.net"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.7"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+	"Development Status :: 5 - Production/Stable",
+	"Intended Audience :: Developers",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3 :: Only"
+]
+dynamic = ["version", "description"]
+
+[project.urls]
+Home = "https://github.com/perigoso/xpi2pkgbuild"
+
+[project.scripts]
+xpi2pkgbuild = "xpi2pkgbuild.xpi2pkgbuild:main"
+
+[tool.black]
+line-length = 127
+skip-string-normalization = true
+target-version = ['py311', 'py310', 'py39', 'py38', 'py37']
