@@ -17,6 +17,7 @@ PROGNAME = "xpi2pkgbuild"
 
 def gen_pkgbuild(extension_data, pkgname, maintainer):
     name = extension_data["slug"]
+    guid = extension_data["guid"]
 
     version = extension_data["current_version"]["version"]
 
@@ -59,7 +60,7 @@ def gen_pkgbuild(extension_data, pkgname, maintainer):
     pkgbuild_str += "\n"
 
     pkgbuild_str += "package() {\n"
-    pkgbuild_str += f"  install -Dm644 '{name}.xpi' \"${{pkgdir}}/usr/lib/firefox/browser/extensions/{name}.xpi\"\n"
+    pkgbuild_str += f"  install -Dm644 '{name}.xpi' \"${{pkgdir}}/usr/lib/firefox/browser/extensions/{guid}.xpi\"\n"
     pkgbuild_str += "}\n"
 
     pkgbuild_str += "\n"
