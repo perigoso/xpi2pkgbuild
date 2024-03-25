@@ -15,7 +15,7 @@ DEFAULT_PKGNAME = "firefox-extension-{slug}-bin"
 PROGNAME = "xpi2pkgbuild"
 
 
-def gen_pkgbuild(extension_data, pkgname, maintainer):
+def gen_pkgbuild(extension_data, pkgname, maintainer, pkgrel):
     name = extension_data["slug"]
     guid = extension_data["guid"]
 
@@ -42,7 +42,7 @@ def gen_pkgbuild(extension_data, pkgname, maintainer):
 
     pkgbuild_str += f"pkgname='{pkgname.format(slug=name)}'\n"
     pkgbuild_str += f"pkgver={version}\n"
-    pkgbuild_str += f"pkgrel=1\n"
+    pkgbuild_str += f"pkgrel={pkgrel}\n"
     pkgbuild_str += f"pkgdesc='{extension_data['summary']['en-US']}'\n"
     pkgbuild_str += f"arch=('any')\n"
     pkgbuild_str += f"url='{extension_data['homepage']['url']['en-US']}'\n"
@@ -87,6 +87,13 @@ def main():
         help="Maintainer to add as comment",
     )
     parser.add_argument(
+        "--pkgrel",
+        "-r",
+        type=int,
+        default=2,
+        help=f"value to use in pkgrel, default is bumped with each {PROGNAME} release",
+    )
+    parser.add_argument(
         "--api",
         type=str,
         default=MOZ_PRODUCTION_API,
@@ -105,7 +112,7 @@ def main():
         exit(1)
 
     extension_data = response.json()
-    pkgbuild = gen_pkgbuild(extension_data, args.pkgname, args.maintainer)
+    pkgbuild = gen_pkgbuild(extension_data, args.pkgname, args.maintainer, args.pkgrel)
 
     if args.output is not None:
         with open(args.output, "w") as f:
