@@ -8,16 +8,16 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "xpi2pkgbuild"
-authors = [{name = "Rafael Silva", email = "perigoso@riseup.net"}]
+authors = [{ name = "Rafael Silva", email = "perigoso@riseup.net" }]
 readme = "README.md"
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 requires-python = ">=3.7"
 classifiers = [
     "License :: OSI Approved :: MIT License",
-	"Development Status :: 5 - Production/Stable",
-	"Intended Audience :: Developers",
-	"Programming Language :: Python :: 3",
-	"Programming Language :: Python :: 3 :: Only"
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
 ]
 dynamic = ["version", "description"]
 
